@@ -3,14 +3,14 @@ package com.example.demo.controller;
 import com.example.demo.entity.User;
 import com.example.demo.services.UserService;
 import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Collection;
+;
 
 @RestController
 @RequestMapping("api/users/")
-@Log
+@Slf4j
 public class UserController {
 
     private final UserService userService;
@@ -26,14 +26,22 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping(value = "/id/{id}")
-    public User getUserById(@PathVariable("id") int id){
+    @GetMapping(value = "add/")
+    public Iterable<User> addUsers(){
+        userService.addUsers();
+        log.info("added users");
+        return userService.getAllUsers();
+    }
+
+    @GetMapping(value = "/{id}")
+    public User getUserById(@PathVariable("id") long id){
         log.info("getting user by id");
         return userService.getUserById(id);
     }
 
-    @DeleteMapping(value ="/id/{id}")
-    public Boolean deleteUserId(@PathVariable("id") int id) {
+    @DeleteMapping(value ="/{id}")
+    public Boolean deleteUserId(@PathVariable("id") long id) {
+        log.info("deleting user by id");
         return userService.deleteUser(id);
     }
 
