@@ -6,7 +6,6 @@ import com.example.demo.entity.ToDo;
 import com.example.demo.services.ToDoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -33,16 +32,21 @@ public class ToDoController {
         return toDoService.getToDoById(id);
     }
 
-    /* public ToDo addToDos(){
-        log.info("adding test to do");
-        return toDoService.testToDo();
+    @PostMapping(value = "/add")
+    public Iterable<ToDo> addToDos(@RequestBody ToDoDto toDo) {
+        toDoService.addToDo(toDo);
+        log.info("adding todo {}",toDo.toString());
+        return toDoService.getAllToDos();
+    }
+
+    /*@DeleteMapping(value = "/{id}/{userId}")
+    public Iterable<ToDo> deleteToDoByIdAndUserId(Long id, Long userId){
+        return toDoService.deleteByIdAndUserId(id, userId);
     }*/
 
-    @PostMapping(value = "/add")
-    public void addToDos(@RequestBody ToDoDto toDo) {
-        //toDoService.addToDo(toDo.getId(), toDo.getToDoName().toString(), toDo.getUserId(), toDo.getDescription().toString(), toDo.getDateTime().toString(), toDo.getStatus().toString(), toDo.getPriority().toString());
-        log.info("adding todo {}",toDo.toString());
-        //return toDoService.testTodo();
+    @DeleteMapping(value = "/{id}")
+    public Iterable<ToDo> deleteToDoById(long id){
+        return toDoService.deleteToDoById(id);
     }
 
 }

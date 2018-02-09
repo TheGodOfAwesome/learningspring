@@ -5,12 +5,13 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ToDoRepository extends CrudRepository<ToDo, Long> {
 
-    Iterable<ToDo> findTodoByUserId(Long userId);
-    Iterable<ToDo> findByUserIdAndStatus(Long userId, String status);
-    Iterable<ToDo> findByUserIdAndPriority(Long userId, String priority);
-    Iterable<ToDo> findByUserIdAndPriorityAndStatus(Long userId, String priority, String status);
+    Iterable<ToDo> findTodoByUserId(long userId);
+    Iterable<ToDo> findByUserIdAndStatus(long userId, String status);
+    Iterable<ToDo> findByUserIdAndPriority(long userId, String priority);
+    Iterable<ToDo> findByUserIdAndPriorityAndStatus(long userId, String priority, String status);
     ToDo findByUserIdAndToDoName(long userId, String toDoName);
-    Iterable<ToDo> findByUserIdAndDateTime(Long userId, String dateTime);
+    Iterable<ToDo> findByUserIdAndDateTime(long userId, String dateTime);
+    void deleteByIdAndUserId(long id, long userId);
     void deleteById(long id);
 
 }

@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.dto.ToDoDto;
 import com.example.demo.entity.ToDo;
 import com.example.demo.repository.ToDoRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -17,12 +18,8 @@ public class ToDoService {
         this.toDoRepository = toDoRepository;
     }
 
-    public ToDo testToDo(){
-        return toDoRepository.save(new ToDo(1, "Finish Todo App", 1, "Finish Todo App By End of Weekend", "12/02/2018", "In Progress", "High"));
-    }
-
-    public ToDo addToDo(long id, String toDoName, long userId, String description, String dateTime, String status, String priority){
-        return toDoRepository.save(new ToDo(id, toDoName, userId, description, dateTime, status, priority));
+    public ToDo addToDo(ToDoDto toDo){
+        return toDoRepository.save(new ToDo(toDo.getId(), toDo.getToDoName(), toDo.getUserId() , toDo.getDescription(), toDo.getDateTime(), toDo.getStatus(), toDo.getPriority()));
     }
 
     public Iterable<ToDo> getAllToDos (){
@@ -63,6 +60,11 @@ public class ToDoService {
 
     public Iterable<ToDo> deleteToDoById(long id){
         toDoRepository.delete(id);
+        return getAllToDos();
+    }
+
+    public Iterable<ToDo> deleteByIdAndUserId(long id, long userId){
+        toDoRepository.deleteByIdAndUserId(id, userId);
         return getAllToDos();
     }
 
