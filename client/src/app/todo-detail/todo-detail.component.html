@@ -6,20 +6,23 @@
         <span>id: </span>{{toDo.id}}
     </div>
     <div>
-        <label>
-            <input [(ngModel)]="toDo.toDoName" placeholder="Name"/>
-        </label>
-        <label>
-            <input [(ngModel)]="toDo.description" placeholder="Description"/>
-        </label>
-        <label>
-            <input [(ngModel)]="toDo.dateTime" placeholder="Date AndOr Time "/>
-        </label>
-        <label>
-            <input [(ngModel)]="toDo.priority" placeholder="Priority"/>
-        </label>
-        <label>
-            <input [(ngModel)]="toDo.status" placeholder="Status"/>
-        </label>
+        <form id="formUpdate" name="formUpdate" #toDo = "ngForm" (ngSubmit) = "updateToDo(toDo.value)">
+            <label>
+                <input id="toDoName" [(ngModel)]="toDo.toDoName" placeholder="Name"/>
+            </label>
+            <label>
+                <input id="description" [(ngModel)]="toDo.description" placeholder="Description"/>
+            </label>
+            <label>
+                <input id="dateTime" [(ngModel)]="toDo.dateTime" placeholder="Date AndOr Time "/>
+            </label>
+            <label>
+                <input id="priority" [(ngModel)]="toDo.priority" placeholder="Priority"/>
+            </label>
+            <label>
+                <input id="status" [(ngModel)]="toDo.status" placeholder="Status"/>
+            </label>
+            <input type="submit" value = "Update"/>
+        </form>
     </div>
 </div>

@@ -40,11 +40,6 @@ public class ToDoController {
         return toDoService.getAllToDos();
     }
 
-    /*@DeleteMapping(value = "/{id}/{userId}")
-    public Iterable<ToDo> deleteToDoByIdAndUserId(Long id, Long userId){
-        return toDoService.deleteByIdAndUserId(id, userId);
-    }*/
-
     @DeleteMapping(value = "/{id}")
     public Iterable<ToDo> deleteToDoById(long id){
         return toDoService.deleteToDoById(id);
