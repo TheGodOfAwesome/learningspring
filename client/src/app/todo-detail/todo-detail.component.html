@@ -1,0 +1,25 @@
+<div *ngIf="toDo">
+    <h3>
+        To Do: {{toDo.toDoName | uppercase}}
+    </h3>
+    <div>
+        <span>id: </span>{{toDo.id}}
+    </div>
+    <div>
+        <label>
+            <input [(ngModel)]="toDo.toDoName" placeholder="Name"/>
+        </label>
+        <label>
+            <input [(ngModel)]="toDo.description" placeholder="Description"/>
+        </label>
+        <label>
+            <input [(ngModel)]="toDo.dateTime" placeholder="Date AndOr Time "/>
+        </label>
+        <label>
+            <input [(ngModel)]="toDo.priority" placeholder="Priority"/>
+        </label>
+        <label>
+            <input [(ngModel)]="toDo.status" placeholder="Status"/>
+        </label>
+    </div>
+</div>

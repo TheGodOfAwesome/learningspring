@@ -1,0 +1,21 @@
+<div style="text-align:center">  
+  <h2>To Do</h2> 
+</div>
+
+<ul>
+  <li *ngFor="let toDo of toDos"
+    [class.selected]="toDo === selectedToDo"
+    (click)="onSelect(toDo)">
+    <h4>
+      <span class="badge">
+        {{toDo.id}}
+      </span>
+      . To Do: {{toDo.toDoName}}
+    </h4> 
+    <h5>
+      Description: {{toDo.description}}
+    </h5>
+  </li>
+</ul>
+
+<app-todo-detail [toDo] = "selectedToDo"></app-todo-detail>

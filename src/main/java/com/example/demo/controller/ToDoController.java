@@ -21,6 +21,7 @@ public class ToDoController {
     }
 
     @GetMapping(value = "")
+    @CrossOrigin(origins = "http://localhost:4200")
     public Iterable<ToDo> getAllToDos(){
         log.info("getting all todos");
         return toDoService.getAllToDos();
