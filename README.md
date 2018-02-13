@@ -12,6 +12,8 @@ When creating a new project it’s probably a good idea to add web, lombok and s
 - And follow the the config steps only adding options that you need or removing options that you don’t need.
 - Wait for the the project to generate you source files and presto congrats you now have your first Spring Boot Project 
 
+![screenshot](https://raw.githubusercontent.com/TheGodOfAwesome/learningspring/master/screencap1.PNG)
+
 Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run". We take an opinionated view of the Spring platform and third-party libraries so you can get started with minimum fuss. Most Spring Boot applications need very little Spring configuration.
 - Spring reactive & servlet based apps on the JVM
 - Lombok: Project Lombok is a java library that automatically plugs into your editor and build tools, spicing up your java.
@@ -41,7 +43,6 @@ E.g.
 import java.util.*;
 public class CollectionsDemo {
 
-
    public static void main(String[] args) {
        Map m1 = new HashMap();
        m1.put("Zara", "8");
@@ -55,14 +56,6 @@ public class CollectionsDemo {
        System.out.print("\t" + m1);
    }
 }
-
-
-
-
-
-
-
-
 
 Appendix
 
@@ -80,21 +73,6 @@ In other words, serializable objects can be written to streams, and hence files,
 Also, there is no syntactic difference between a JavaBean and another class -- a class defines a JavaBean if it follows the standards.
 
 There is a term for it because the standard allows libraries to programmatically do things with class instances you define in a predefined way. For example, if a library wants to stream any object you pass into it, it knows it can because your object is serializable (assuming the lib requires your objects be proper JavaBeans).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 An interface is a special form of an abstract class which does not implement any methods. In Java, you create an interface like this:
 
