@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
 import { ToDoService } from '../shared';
 import { ToDo } from '../ToDo';
 
@@ -16,7 +17,7 @@ export class TodoListComponent implements OnInit {
 
 	selectedToDo: ToDo;
 	
-	constructor(private toDoService: ToDoService) { }
+	constructor(private toDoService: ToDoService, private httpClient: HttpClient) { }
 	
 	ngOnInit() {
 
@@ -27,6 +28,17 @@ export class TodoListComponent implements OnInit {
 			error => console.log(error)
 		)
 	}
+
+	onSubmit(value: any){
+		console.log(value);
+		this.httpClient.post("http://localhost:8080/api/todos/add/", value)
+        .subscribe(
+            (data:any) => {
+                console.log(data)
+            }
+		)
+		window.location.reload();
+    }
 
 	onSelect(toDo: ToDo): void{
 		this.selectedToDo = toDo;

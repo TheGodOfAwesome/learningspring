@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Http, Response, Headers} from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { NgModel } from '@angular/forms';
 import { ToDo } from '../ToDo';
 
@@ -9,22 +10,33 @@ import { ToDo } from '../ToDo';
     styleUrls: ['./todo-detail.component.css']
 
 })
+
 export class TodoDetailComponent implements
 OnInit{
     @Input() toDo: ToDo;
 
-    constructor(private http: Http) { }
+    constructor(private httpClient: HttpClient) { }
 
-    updateToDo = function(ToDo){
-        this.toDo = {
-            "id": ToDo.id,
-            "toDoName": ToDo.toDoName,
-            "description": ToDo.description,
-            "dateTime": ToDo.dateTime,
-            "priority": ToDo.priority,
-            "status": ToDo.status
-        }
-        //this.http.post("http://localhost:4200/api/todos/update/", this.toDo.subscribe)
+    deleteToDo(values: any){
+        console.log(values);
+        this.httpClient.post("http://localhost:8080/api/todos/delete/", values)
+        .subscribe(
+            (data:any) => {
+                console.log(data)
+            }
+        )
+        window.location.reload();
+    }
+
+    onSubmit(value: any){
+        console.log(value);
+        this.httpClient.post("http://localhost:8080/api/todos/update/", value)
+        .subscribe(
+            (data:any) => {
+                console.log(data)
+            }
+        )
+        window.location.reload();
     }
     
     ngOnInit() {

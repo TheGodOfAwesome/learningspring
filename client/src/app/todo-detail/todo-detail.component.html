@@ -6,22 +6,29 @@
         <span>id: </span>{{toDo.id}}
     </div>
     <div>
-        <form id="formUpdate" name="formUpdate" #toDo = "ngForm" (ngSubmit) = "updateToDo(toDo.value)">
+        <form id="formUpdate" name="formUpdate" #updateToDoForm="ngForm" (ngSubmit)="onSubmit(updateToDoForm.value)">
             <label>
-                <input id="toDoName" [(ngModel)]="toDo.toDoName" placeholder="Name"/>
+                <input id="id" name="id" [(ngModel)]="toDo.id" placeholder="id"/>
             </label>
             <label>
-                <input id="description" [(ngModel)]="toDo.description" placeholder="Description"/>
+                <input id="toDoName" name="toDoName" [(ngModel)]="toDo.toDoName" placeholder="Name"/>
             </label>
             <label>
-                <input id="dateTime" [(ngModel)]="toDo.dateTime" placeholder="Date AndOr Time "/>
+                <input id="userId" name="userId" [(ngModel)]="toDo.userId" placeholder="User Id"/>
             </label>
             <label>
-                <input id="priority" [(ngModel)]="toDo.priority" placeholder="Priority"/>
+                <input id="description" name="description" [(ngModel)]="toDo.description" placeholder="Description"/>
             </label>
             <label>
-                <input id="status" [(ngModel)]="toDo.status" placeholder="Status"/>
+                <input id="dateTime" type="date" name="dateTime" [(ngModel)]="toDo.dateTime" placeholder="Due Date" useValueAsDate>
             </label>
+            <label>
+                <input id="priority" name="priority" [(ngModel)]="toDo.priority" placeholder="Priority"/>
+            </label>
+            <label>
+                <input id="status" name="status" [(ngModel)]="toDo.status" placeholder="Status"/>
+            </label>
+            <button type="button" (click)="deleteToDo(updateToDoForm.value)">Delete</button>
             <input type="submit" value = "Update"/>
         </form>
     </div>

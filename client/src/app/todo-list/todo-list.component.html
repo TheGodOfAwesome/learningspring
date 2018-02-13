@@ -2,6 +2,33 @@
   <h2>To Do</h2> 
 </div>
 
+<div style="text-align:center">
+    <form id="formAdd" name="formAdd" #addToDoForm="ngForm" (ngSubmit)="onSubmit(addToDoForm.value)">
+        <label>
+            <input id="id" name="id" placeholder="id" ngModel/>
+        </label>
+        <label>
+            <input id="toDoName" name="toDoName" placeholder="Name" ngModel/>
+        </label>
+        <label>
+            <input id="userId" name="userId" placeholder="User Id" ngModel/>
+        </label>
+        <label>
+            <input id="description" name="description" placeholder="Description" ngModel/>
+        </label>
+        <label>
+            <input id="dateTime" type="date" name="dateTime" placeholder="Due Date" useValueAsDate ngModel>
+        </label>
+        <label>
+            <input id="priority" name="priority"  placeholder="Priority" ngModel/>
+        </label>
+        <label>
+            <input id="status" name="status" placeholder="Status" ngModel/>
+        </label>
+        <input type="submit" value = "Add"/>
+    </form>
+</div>
+
 <ul>
   <li *ngFor="let toDo of toDos"
     [class.selected]="toDo === selectedToDo"

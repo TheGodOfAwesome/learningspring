@@ -6,6 +6,7 @@ import com.example.demo.entity.ToDo;
 import com.example.demo.services.ToDoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -40,9 +41,26 @@ public class ToDoController {
         return toDoService.getAllToDos();
     }
 
-    @DeleteMapping(value = "/{id}")
-    public Iterable<ToDo> deleteToDoById(long id){
-        return toDoService.deleteToDoById(id);
+    @Transactional
+    @PostMapping(value = "/update/")
+    public ToDo updateToDo(@RequestBody ToDoDto toDo){
+        log.info("updating todo {}");
+        return toDoService.updateToDo(toDo);
+    }
+
+    @Transactional
+    @PostMapping(value = "/delete/")
+    public void deleteToDoById(@RequestBody ToDoDto toDo){
+        long id = toDo.getId();
+        log.info("deleting todo {" + id + "}");
+        toDoService.deleteToDoById(id);
+    }
+
+    @Transactional
+    @PostMapping(value = "/status/")
+    public Iterable<ToDo> getByStatus(@RequestBody ToDoDto toDoStatus){
+        log.info("Finding by status: {}",toDoStatus.getStatus());
+       return toDoService.getAllByStatus(toDoStatus.getStatus());
     }
 
 }
