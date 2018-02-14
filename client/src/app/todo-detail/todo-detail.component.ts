@@ -25,7 +25,7 @@ OnInit{
                 console.log(data)
             }
         )
-        window.location.reload();
+        //window.location.reload();
     }
 
     onSubmit(value: any){
@@ -36,7 +36,7 @@ OnInit{
                 console.log(data)
             }
         )
-        window.location.reload();
+        //window.location.reload();
     }
     
     ngOnInit() {

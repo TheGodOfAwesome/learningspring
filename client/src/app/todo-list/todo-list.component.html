@@ -5,9 +5,6 @@
 <div style="text-align:center">
     <form id="formAdd" name="formAdd" #addToDoForm="ngForm" (ngSubmit)="onSubmit(addToDoForm.value)">
         <label>
-            <input id="id" name="id" placeholder="id" ngModel/>
-        </label>
-        <label>
             <input id="toDoName" name="toDoName" placeholder="Name" ngModel/>
         </label>
         <label>
@@ -20,10 +17,19 @@
             <input id="dateTime" type="date" name="dateTime" placeholder="Due Date" useValueAsDate ngModel>
         </label>
         <label>
-            <input id="priority" name="priority"  placeholder="Priority" ngModel/>
+            <select id="priority" name="priority" placeholder="Normal" ngModel>
+                <option selected="low" value="Low"> Low </option>
+                <option selected="normal" value="Normal"> Normal </option>
+                <option selected="high" value="High"> High </option>
+                <option selected="critical" value="Critical"> Critical </option>
+            </select>
         </label>
         <label>
-            <input id="status" name="status" placeholder="Status" ngModel/>
+            <select id="status" name="status" placeholder="In Progress" ngModel>
+                <option selected="pending" value="Pending"> Pending </option>
+                <option selected="in progress" value="In Progress"> In Progress </option>
+                <option selected="submitted" value="Submitted"> Submitted </option>
+            </select>
         </label>
         <input type="submit" value = "Add"/>
     </form>

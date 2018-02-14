@@ -8,7 +8,7 @@
     <div>
         <form id="formUpdate" name="formUpdate" #updateToDoForm="ngForm" (ngSubmit)="onSubmit(updateToDoForm.value)">
             <label>
-                <input id="id" name="id" [(ngModel)]="toDo.id" placeholder="id"/>
+                <input type="hidden" id="id" name="id" [(ngModel)]="toDo.id" placeholder="Id"/>
             </label>
             <label>
                 <input id="toDoName" name="toDoName" [(ngModel)]="toDo.toDoName" placeholder="Name"/>
@@ -23,10 +23,19 @@
                 <input id="dateTime" type="date" name="dateTime" [(ngModel)]="toDo.dateTime" placeholder="Due Date" useValueAsDate>
             </label>
             <label>
-                <input id="priority" name="priority" [(ngModel)]="toDo.priority" placeholder="Priority"/>
+                <select id="priority" name="priority" [(ngModel)]="toDo.priority">
+                    <option selected="low" value="Low"> Low </option>
+                    <option selected="normal" value="Normal"> Normal </option>
+                    <option selected="high" value="High"> High </option>
+                    <option selected="critical" value="Critical"> Critical </option>
+                </select>
             </label>
             <label>
-                <input id="status" name="status" [(ngModel)]="toDo.status" placeholder="Status"/>
+                <select id="status" name="status" [(ngModel)]="toDo.status">
+                    <option selected="pending" value="Pending"> Pending </option>
+                    <option selected="in progress" value="In Progress"> In Progress </option>
+                    <option selected="submitted" value="Submitted"> Submitted </option>
+                </select>
             </label>
             <button type="button" (click)="deleteToDo(updateToDoForm.value)">Delete</button>
             <input type="submit" value = "Update"/>
