@@ -43,9 +43,10 @@ public class ToDoController {
 
     @Transactional
     @PostMapping(value = "/update/")
-    public ToDo updateToDo(@RequestBody ToDoDto toDo){
+    public Iterable<ToDo> updateToDo(@RequestBody ToDoDto toDo){
         log.info("updating todo {}");
-        return toDoService.updateToDo(toDo);
+        toDoService.updateToDo(toDo);
+        return toDoService.getAllToDos();
     }
 
     @Transactional

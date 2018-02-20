@@ -7,13 +7,15 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoDetailComponent } from './todo-detail/todo-detail.component';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   
 	declarations: [
     AppComponent,
     TodoListComponent,
-    TodoDetailComponent
+    TodoDetailComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule, 
